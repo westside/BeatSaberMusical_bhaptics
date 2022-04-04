@@ -41,7 +41,7 @@ namespace MyBhapticsTactsuit
             try
             {
 #pragma warning disable CS0618 // remove warning that the C# library is deprecated
-                hapticPlayer = new HapticPlayer("H3VR_bhaptics", "H3VR_bhaptics");
+                hapticPlayer = new HapticPlayer("H3VR_bhaptics", "H3VR_bhaptics", ConnectionChanged);
 #pragma warning restore CS0618
                 suitDisabled = false;
             }
@@ -137,6 +137,11 @@ namespace MyBhapticsTactsuit
         public bool IsPlaying(String effect)
         {
             return IsPlaying(effect);
+        }
+
+        private void ConnectionChanged(bool connected)
+        {
+            LOG("ConnectionChanged " + connected);
         }
 
     }
